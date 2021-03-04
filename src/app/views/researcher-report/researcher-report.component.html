@@ -1,0 +1,23 @@
+<mat-card class="card">
+
+        <mat-card-title class="title">Researcher Report</mat-card-title>
+        <mat-card-title class="title">{{formData.name}}</mat-card-title>
+        <div *ngIf="formData.seed==true">
+            <mat-card-title class="subtitle">Collaboration Chart</mat-card-title>
+            <app-chart-coauthoring></app-chart-coauthoring>
+            <mat-card-title class="subtitle">Publication Histogram </mat-card-title>
+            <app-chart-publication></app-chart-publication>
+        
+        </div>
+
+        <div *ngIf="formData.seed==false">
+        <mat-card-title class="subtitle">Publication Histogram </mat-card-title>
+            <app-chart-publication></app-chart-publication>
+        </div>
+
+   
+
+
+
+</mat-card>
+

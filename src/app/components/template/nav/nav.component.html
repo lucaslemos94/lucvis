@@ -1,0 +1,45 @@
+<mat-sidenav-container class="container">
+
+    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="50">
+
+       <mat-nav-list class="nav-list">
+
+       <a mat-list-item routerLink="/">
+           <i class="material-icons">
+            home
+           </i>
+           Home
+       </a>
+       <a mat-list-item routerLink="socialnetwork">
+        <i class="material-icons">
+         device_hub
+        </i>
+        Social Network
+    </a>
+
+    <a mat-list-item routerLink="findresearcher">
+        <i class="material-icons">
+         person
+        </i>
+        Find Researcher
+    </a>
+        
+       </mat-nav-list>
+
+    </mat-sidenav>
+
+
+<mat-sidenav-content class="content">
+
+
+    <!-- <app-home></app-home> -->
+
+    <!-- <app-social-network></app-social-network> -->
+    <router-outlet routerLink=""></router-outlet>
+    
+
+</mat-sidenav-content>
+
+
+</mat-sidenav-container>
+

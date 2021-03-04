@@ -1,0 +1,16 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z3" *ngIf="dataIsLoaded">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Researchers ({{dataSource.data.length}})</mat-header-cell>
+    <mat-cell *matCellDef="let researcher"> {{researcher.name}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="navigate(row)"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[10, 5, 15]" showFirstLastButtons></mat-paginator>
+
+

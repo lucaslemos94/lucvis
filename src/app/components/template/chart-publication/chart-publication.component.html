@@ -1,0 +1,14 @@
+<!-- <mat-spinner *ngIf="!loadedPublications"></mat-spinner> -->
+<mat-progress-bar mode="indeterminate" *ngIf="!loadedPublications"></mat-progress-bar>
+<div class="chart" *ngIf="loadedPublications">
+    <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+      [colors]="barChartColors">
+    </canvas>
+  </div>
+

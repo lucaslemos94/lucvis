@@ -1,0 +1,20 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: space-between
+    /* justify-content: center; */
+    /* height:100%;
+    width:768px; */
+}
+
+.card .title {
+    align-self: center;
+    padding: 10px 0px 0px 0px;
+}
+
+.card .subtitle{
+    align-self: flex-start;
+    padding: 20px 0px 10px 0px;
+}
+

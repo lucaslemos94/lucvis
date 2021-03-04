@@ -1,0 +1,29 @@
+/* sidenav */
+.sidenav{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(92, 92, 255);
+    width: 180px;
+    height:100%;
+    color: rgb(255, 255, 255);
+    position: fixed;
+}
+
+.sidenav a{
+
+   color: rgb(255, 255, 255);
+}
+
+.sidenav i{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+
+/* content */
+.content{
+    
+    padding: 5px;
+    
+}
+
+

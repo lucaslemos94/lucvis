@@ -1,0 +1,26 @@
+
+<div class=graph-actions>
+    <mat-icon matTooltip="Stop physics simulation." (click)="stabilizeNetwork()">pan_tool</mat-icon>
+    <mat-icon matTooltip="Reload the visualization." (click)="reloadNetwork()">cached</mat-icon> 
+    <mat-icon  matTooltip="Open in full screen." (click)="openFullscreen()">open_in_full</mat-icon>
+</div>
+
+<mat-progress-bar mode="indeterminate" *ngIf="spinner"></mat-progress-bar>
+<!-- <mat-spinner *ngIf="spinner"></mat-spinner> -->
+
+
+<!-- <div [hidden]="spinner"><mat-spinner></mat-spinner></div> -->
+
+<div id="viz" #fullScreen [hidden]="isHidden"></div>
+
+<!-- <button mat-raised-button color="primary" (click)="stabilizeNetwork()" class="bStabilize">Stabilize</button>
+<button mat-raised-button color="accent" (click)="reloadNetwork()">Reload</button>
+<button mat-raised-button color="warn" (click)="openFullscreen()">Full Screen</button> -->
+
+
+   
+
+
+
+
+

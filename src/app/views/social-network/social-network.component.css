@@ -1,0 +1,14 @@
+.radio-group {
+    /* display: flex;
+    flex-direction: row; */
+    margin: 15px 0;
+
+  }
+  
+  .radio-button {
+    margin: 5px;
+  }
+
+  .div-checkbox {
+    padding-right: 5px;
+  }

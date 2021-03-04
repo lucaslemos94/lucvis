@@ -1,0 +1,28 @@
+<mat-card class="card mat-elevation-z3">
+    <mat-card-title>Refine By</mat-card-title>
+    <br>
+    <mat-card-content>
+
+      <form [formGroup]="myForm">
+        Name&nbsp;&nbsp;&nbsp;
+        
+        <mat-form-field>
+          <input matInput type="text" formControlName="nameResearcher" placeholder="Researcher´s name">
+          <mat-hint>More name information gets better results.</mat-hint>
+
+          <mat-error *ngIf="myForm.controls['nameResearcher'].touched && myForm.controls['nameResearcher'].hasError('minlength')">Name too short.</mat-error>
+          <mat-error *ngIf="myForm.controls['nameResearcher'].touched && myForm.controls['nameResearcher'].hasError('required')">Name is required.</mat-error>
+        </mat-form-field>
+        
+    </form>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button color="primary" mat-raised-button [disabled]="!myForm.valid" (click)="navigateToResearcherReportComponent()"> Apply </button>&nbsp;&nbsp;
+      <button mat-button color="warn"(click)="navigateToHomeComponent()" mat-raised-button> Cancel </button>
+    </mat-card-actions>
+
+</mat-card>
+<!-- {{myForm.value | json}} -->
+    

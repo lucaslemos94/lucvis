@@ -1,0 +1,35 @@
+
+.header{
+    /* display: flex; */
+     /* align-items: center;  */
+    height: 50px;
+    width: 100%;
+    /* position: relative; */
+     /* color:rgb(192, 190, 190); */
+    /* position: sticky; */
+     /* justify-content: flex-start; */
+    /* width: 1366px; */
+    /* background-color: rgb(212, 212, 212); */
+    /* position: fixed; */
+    /* font-weight: 300; */
+    /* weight: 768px; */
+}
+
+
+.header .logo{
+
+    max-height: 40px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    height: 40px;
+    /* max-height: 40px;
+     */
+    text-decoration: none;
+
+    /* left:5px;
+    width: 300px;
+    height: 90px;  */
+    /* padding-left:15p; */
+    /* position: absolute; top: 10px; left: 5px; */
+}
+
