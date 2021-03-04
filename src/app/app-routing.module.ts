@@ -13,7 +13,7 @@ import { ForceComponent } from './views/graph/3d-force/force.component';
 // configuring routes
 const routes: Routes = [
       
-      {path:"home", component:HomeComponent},
+      {path:"", component:HomeComponent},
       {path:"socialnetwork", component:SocialNetworkComponent},
       {path:"socialnetwork/graph",component:GraphComponent},
       {path:"findresearcher",component:FindResearcherComponent},
