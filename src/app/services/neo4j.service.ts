@@ -18,7 +18,7 @@ export class Neo4jService {
 
 
   driver =  neo4j.driver(environment.HOST_PORT,neo4j.auth.basic(environment.USER,environment.PASSWORD),{
-    encrypted: false,
+    encrypted: true,
   });
 
   //get a list of all universitys
