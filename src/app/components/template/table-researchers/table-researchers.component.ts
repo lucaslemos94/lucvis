@@ -36,8 +36,6 @@ export class TableResearchersComponent implements OnInit {
     // consume the promise result
     this.neo4jService.getResearchers(formData.nameResearcher).then(result =>{
 
-      console.log(result)
-
     result.records.forEach(record => {
       researchers.push({id: record.get('id').low, name:record.get('name'),seed:record.get('seed')})
       

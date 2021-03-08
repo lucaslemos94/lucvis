@@ -33,7 +33,7 @@ export class ForceComponent implements OnInit {
 
   ngOnDestroy(){
     this.graph._destructor();
-    console.log('destroido'+this.graph)
+    
   }
 
 
