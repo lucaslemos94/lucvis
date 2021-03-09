@@ -5,7 +5,7 @@
 export const environment = {
    //HOST_PORT : 'bolt://192.168.0.46:7687',
    production: false,
-   HOST_PORT : 'bolt://189.6.24.119:7687',
+   HOST_PORT : 'bolt://localhost:7687',
    PASSWORD : 'scisynergy',
    USER : 'neo4j'
 };
