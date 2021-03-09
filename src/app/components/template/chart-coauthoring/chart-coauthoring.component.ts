@@ -30,7 +30,6 @@ export class ChartCoauthoringComponent implements OnInit {
     // getting object saved from previous component
     const researcher = this.dataService.retrieveObj();
     
-
     if(researcher.seed){
     
     this.neo4jService.getCoauthoring(researcher.id).then(el =>{

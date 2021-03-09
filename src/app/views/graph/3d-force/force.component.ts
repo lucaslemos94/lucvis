@@ -24,6 +24,7 @@ export class ForceComponent implements OnInit {
 
     // retrieve form data
     const myForm =  this.dataService.retrieveForm();
+    console.log(myForm)
     
     this.graphData(myForm.university,myForm.researchers).then(graph=>{
       this.draw(graph);
@@ -48,12 +49,14 @@ export class ForceComponent implements OnInit {
     const duplicateNodes = [];
   
     result.records.forEach(r => { 
-      duplicateNodes.push({id: r.get('a1').identity.low, label: r.get('a1').properties.name,x:Math.random(),y:Math.random(),size:r.get('a1').properties.louvain_undirected,});
-      duplicateNodes.push({id: r.get('a2').identity.low, label: r.get('a2').properties.name,x:Math.random(),y:Math.random(),size:r.get('a2').properties.louvain_undirected,});
+      duplicateNodes.push({id: r.get('a1').identity.low, label: r.get('a1').properties.name,x:Math.random(),y:Math.random(),size:r.get('a1').properties.louvain_undirected});
+      duplicateNodes.push({id: r.get('a2').identity.low, label: r.get('a2').properties.name,x:Math.random(),y:Math.random(),size:r.get('a2').properties.louvain_undirected});
     });
   
     const graph={nodes:this.getUnique(duplicateNodes,'id'),links:this.getUnique(duplicateEdges,'id')};
-  
+    
+    console.log(graph)
+
     return graph;
   
   }

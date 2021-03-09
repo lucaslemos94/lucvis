@@ -112,7 +112,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
 
     const result =  await session.run(`MATCH (i:Institution{name:"${university}"})-[rel:ASSOCIATED_TO]-(a1:Author)-[co:COAUTHOR_WEIGHT]-(a2:Author) WHERE id(a1) IN [${researchers}] return a1,co,a2 order by id(a1) asc`);
 
-    // const result =  await session.run(`MATCH (i:Institution)-[rel:ASSOCIATED_TO]-(a1:Author)-[co:COAUTHOR_WEIGHT]-(a2:Author) WHERE i.name IN ["UnB","USP","UFAM","UFMG","UFRN"] return a1,co,a2 order by id(a1) asc`);
+    session.close();
 
     return result;
   }
@@ -151,6 +151,8 @@ getSeeds(university:string,seeds:Researcher[]):void{
     RETURN minAmount, maxAmount,year order by year`,{})
   
     promises.push(result3)
+
+    session.close();
   
     return promises
   
@@ -172,7 +174,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
   
     promises.push(result);
 
-    session.close()
+    session.close();
 
     return promises
 
