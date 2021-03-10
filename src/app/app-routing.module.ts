@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // importing components
 import{HomeComponent} from './views/home/home.component';
 import {SocialNetworkComponent}from'./views/social-network/social-network.component';
-import {GraphComponent}from'./views/graph/graph.component';
+import {GraphComponent}from'./views/graph/neovis/graph.component';
 import { FindResearcherComponent } from './views/find-researcher/find-researcher.component';
 import { ResearcherReportComponent } from './views/researcher-report/researcher-report.component';
 import { TableResearchersComponent } from './components/template/table-researchers/table-researchers.component';

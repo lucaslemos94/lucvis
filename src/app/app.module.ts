@@ -12,7 +12,7 @@ import { NavComponent } from './components/template/nav/nav.component'
 import {HomeComponent} from './views/home/home.component'
 import { FooterComponent } from './components/template/footer/footer.component';
 import {SocialNetworkComponent} from './views/social-network/social-network.component';
-import { GraphComponent } from './views/graph/graph.component';
+import { GraphComponent } from './views/graph/neovis/graph.component';
 import { FindResearcherComponent } from './views/find-researcher/find-researcher.component';
 import { SelectCheckAllComponent } from './components/template/select-check-all/select-check-all.component';
 import { ResearcherReportComponent } from './views/researcher-report/researcher-report.component';
@@ -39,6 +39,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { SigmaComponent } from './views/graph/sigma/sigma.component';
 import { ForceComponent } from './views/graph/3d-force/force.component';
+
+import {SliderModule} from 'primeng/slider';
 
 
 
@@ -85,7 +87,7 @@ import { ForceComponent } from './views/graph/3d-force/force.component';
     MatTooltipModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    
+    SliderModule 
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,

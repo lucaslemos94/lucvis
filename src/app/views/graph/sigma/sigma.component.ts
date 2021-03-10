@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import sigma from 'sigma'
 import { Neo4jService } from 'src/app/services/neo4j.service';
+import { Year } from 'src/model/year.model';
 declare const sigma:any;
 
 @Component({
@@ -14,12 +15,13 @@ export class SigmaComponent implements OnInit {
   pesquisadores:any[]=[242,238];
   universidade:string='UnB'
   s:any;
+  years:any
 
   constructor(private neo4jService:Neo4jService) { }
 
  ngOnInit(){
 
-  this.graphData(this.universidade,this.pesquisadores).then(graph=>{
+  this.graphData(this.universidade,this.pesquisadores,this.years).then(graph=>{
     this.draw(graph);
   });
 
@@ -82,9 +84,9 @@ this.s.bind('overEdge outEdge doubleClickEdge rightClickEdge', function(e) {
 
 }
 
-async graphData(university:any,researchers:any){
+async graphData(university:any,researchers:any,years:number[]){
 
-  const result =  await this.neo4jService.getNetwork(university,researchers);
+  const result =  await this.neo4jService.getNetwork(university,researchers,years);
 
   console.log(result)
 

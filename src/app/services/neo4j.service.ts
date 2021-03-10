@@ -3,6 +3,8 @@ import neo4j from "neo4j-driver/lib/browser/neo4j-web";
 import { Researcher } from 'src/model/researcher.model';
 import { University } from 'src/model/university.model';
 import { environment } from 'src/environments/environment';
+import * as _ from 'lodash';
+
 
 
 @Injectable({
@@ -106,16 +108,27 @@ getSeeds(university:string,seeds:Researcher[]):void{
   // }
 
 
-  async getNetwork(university:any,researchers:any[]){
+  async getNetwork(university:University,researchers:Researcher[],years:number[]){
 
     const session =  await this.driver.session();
 
-    const result =  await session.run(`MATCH (i:Institution{name:"${university}"})-[rel:ASSOCIATED_TO]-(a1:Author)-[co:COAUTHOR_WEIGHT]-(a2:Author) WHERE id(a1) IN [${researchers}] return a1,co,a2 order by id(a1) asc`);
+    let result = null;
 
+
+    if ((years[0]==environment.year.from && years[1]==environment.year.to))
+
+        result = await session.run(`MATCH (i:Institution{name:"${university}"})-[]-(a1:Author)-[co:COAUTHOR_WEIGHT]-(a2:Author) WHERE id(a1) IN [${researchers}] return a1,co,a2`);
+    else{
+        
+        years = _.range(years[0],years[1]+1);
+        result = await session.run( `MATCH (i:Institution{name:"${university}"})-[]-(a1:Author)-[co:COAUTHOR]-(a2:Author) WHERE id(a1) IN [${researchers}] AND co.year IN [${years}] return a1,co,a2`);
+    }
     session.close();
 
     return result;
+    
   }
+    
 
 
   // get author coauthorship, lowest, medium and highest by year

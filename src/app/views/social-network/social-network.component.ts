@@ -23,6 +23,7 @@ export class SocialNetworkComponent implements OnInit {
   researchers:Researcher[]=[];
   myForm:FormGroup;
   year: FormArray;
+  rangeValues: number[] = [1973,2021];
 
 
   // function thats called upon component starts
@@ -41,10 +42,11 @@ export class SocialNetworkComponent implements OnInit {
      this.myForm = this.fb.group({
      university:[[null],Validators.required],
      researchers:[[null],Validators.required],
-     year:this.fb.array([],Validators.required)
+     year:[[0,100],Validators.required]
+    //  year:this.fb.array([],Validators.required),
     
   })
-  this.createYear();
+  // this.createYear();
   
 }
 

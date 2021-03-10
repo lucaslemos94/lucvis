@@ -92,6 +92,7 @@ Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <mat-card class="card mat-elevation-z3">
     <mat-card-title>Refine By</mat-card-title>
+    <mat-card-subtitle>Use filters below to refine your coauthorship search.</mat-card-subtitle>
 
     <!-- {{myForm.value | json}} -->
     <mat-card-content>
@@ -140,12 +141,20 @@ Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <mat-error *ngIf="myForm.controls['university'].hasError('required') && myForm.controls['university'].touched"> Select at least one University.</mat-error>
         
        -->
-         <div formArrayName="year">
+       <!-- <br>Year: {{rangeValues[0] + ' - ' + rangeValues[1]}}&nbsp;&nbsp;<br> -->
+       <div class="div-slider">
+        <h4>Year: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h4>
+        <p-slider formControlName="year" [(ngModel)]="rangeValues" [range]="true" [min]="1973" [max]="2021"></p-slider>
+        </div>
+
+    
+         <!-- <div formArrayName="year">
             
         <div *ngFor="let year of myForm.controls.year['controls']; let i=index;" [formGroupName]="i" class="row">
             Year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-form-field>
                 From:<br>
+                
                 <input matInput type="number" min="1973" max="2020" formControlName="from">
                 <mat-hint>min year: 1973</mat-hint>
             </mat-form-field>
@@ -157,7 +166,7 @@ Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <mat-hint>max year:2020</mat-hint>
             </mat-form-field>
          </div>
-       </div> 
+       </div>  -->
            
     </form>
 
@@ -167,7 +176,11 @@ Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button mat-button color="primary" mat-raised-button [disabled]="!myForm.valid" (click)="navigateToGraphComponent()"> Apply </button>&nbsp;&nbsp;
         <button mat-button color="warn" mat-raised-button (click)="navigateToHomeComponent()"> Cancel </button>
     </mat-card-actions>
+    
+    
 </mat-card>
+
+
 
 <!-- {{myForm.value | json}} -->
 
