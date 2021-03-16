@@ -40,7 +40,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/market-project",
+            "outputPath": "dist/lucvis-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,7 +61,7 @@
             ],
             "scripts": ["src/assets/lib/sigma/sigma.conf.js","node_modules/sigma/build/sigma.min.js","node_modules/sigma/build/plugins/sigma.plugins.dragNodes.min.js","node_modules/sigma/build/plugins/sigma.layout.forceAtlas2.min.js","node_modules/sigma/build/plugins/sigma.plugins.dragNodes.min.js","node_modules/sigma/build/plugins/sigma.neo4j.cypher.min.js",
               "node_modules/sigma/build/plugins/sigma.parsers.json.min.js"],
-            "allowedCommonJsDependencies": ["chart.js","chartjs-plugin-datalabels","tinycolor2","ngraph.graph","ngraph.forcelayout","@babel/runtime/helpers/construct"]
+            "allowedCommonJsDependencies": ["chart.js","chartjs-plugin-datalabels","tinycolor2","ngraph.graph","ngraph.forcelayout","@babel/runtime/helpers/construct","lodash"]
           },
           "configurations": {
             "production": {

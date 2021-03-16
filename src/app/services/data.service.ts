@@ -11,7 +11,7 @@ export class DataService {
   obj:any
 
   //save form data
-  saveForm(myForm){
+  saveForm(myForm:any){
     return this.myForm = myForm;
   }
 
@@ -27,7 +27,7 @@ export class DataService {
 
   //retrieve object
   retrieveObj(){
-    return this.obj
+    return this.obj;
   }
   
 }

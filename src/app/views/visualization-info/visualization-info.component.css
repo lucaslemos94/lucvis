@@ -1,0 +1,12 @@
+.vis{
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+}
+
+.vis .title{
+    font-size: 1.5rem;
+    /* font-weight: 100; */
+    line-height: 1.2;
+}
+

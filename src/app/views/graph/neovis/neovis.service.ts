@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
 import Neovis from 'src/app/neovis.js-master/dist/neovis.js';
-import { Year } from 'src/model/year.model';
 import { University } from 'src/model/university.model';
 import { Researcher } from 'src/model/researcher.model';
 import { environment } from 'src/environments/environment';
-
+import * as _ from 'lodash';
+// import Neovis from 'neovis.js'
 @Injectable({
   providedIn: 'root'
 })
 
-export class GraphService {
+export class NeovisService {
 
   constructor() { }
 
  //function draw(), which draw nodes, using desired configuration
- draw(university:University,researchers:Researcher[],year:Year) {
+ draw(university:University,researchers:Researcher[],years:number[]) {
 
-  if((year[0].from==1973 && year[0].to!=2020) ||(year[0].from!=1973 && year[0].to==2020) || (year[0].from!=1973 && year[0].to!=2020))
-    
-    var query = `MATCH (i:Institution{name:"${university}"})-[]-(a1:Author)-[co:COAUTHOR]-(a2:Author) WHERE id(a1) IN [${researchers}] AND co.year IN [${year[0].from},${year[0].to}] return a1,co,a2`;
-    
-  else if( (year[0].from==1973 && year[0].to==2020))
+  let query = null;
 
-    var query = `MATCH (i:Institution{name:"${university}"})-[]-(a1:Author)-[co:COAUTHOR_WEIGHT]-(a2:Author) WHERE id(a1) IN [${researchers}] return a1,co,a2`;
+  if ((years[0]==environment.year.from && years[1]==environment.year.to)){
+
+       query = `MATCH (i:Institution{name:"${university}"})-[]-(a1:Author)-[co:COAUTHOR_WEIGHT]-(a2:Author) WHERE id(a1) IN [${researchers}] return a1,co,a2`;
+  }
+    else{
+        
+        years = _.range(years[0],years[1]+1);
+        query = `MATCH (i:Institution{name:"${university}"})-[]-(a1:Author)-[co:COAUTHOR]-(a2:Author) WHERE id(a1) IN [${researchers}] AND co.year IN [${years}] return a1,co,a2`;
+  }
+ 
 
   //variable which will define the network
   var config = {
@@ -30,7 +35,7 @@ export class GraphService {
   server_url: environment.HOST_PORT,
   server_user: environment.USER,
   server_password: environment.PASSWORD,
-  // console_debug:true,
+  
 
   //defining labels of nodes
   labels: {

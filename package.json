@@ -1,5 +1,5 @@
 {
-  "name": "market-project",
+  "name": "lucvis-project",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -32,7 +32,7 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
-    "neo4j-driver": "^4.0.2",
+    "neo4j-driver": "^4.2.3",
     "neovis.js": "^1.6.0",
     "ng2-charts": "^2.3.3",
     "primeicons": "^4.1.0",
@@ -40,8 +40,6 @@
     "rxjs": "~6.5.4",
     "sigma": "1.2.1",
     "sigma-webpack": "^1.2.0-1",
-    "three": "^0.126.1",
-    "three-spritetext": "^1.6.0",
     "tslib": "^2.0.0",
     "typescript": "^4.0.5",
     "zone.js": "~0.10.2"

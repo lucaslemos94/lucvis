@@ -1,16 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GraphService } from './graph.service';
+import { NeovisService } from './neovis.service';
 import { DataService } from 'src/app/services/data.service';
-import { ThemeService } from 'ng2-charts';
 
 @Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.css']
+  selector: 'app-neovis',
+  templateUrl: './neovis.component.html',
+  styleUrls: ['./neovis.component.css']
 })
-export class GraphComponent implements OnInit {
+export class NeovisComponent implements OnInit {
 
-  constructor(private graphService:GraphService, private dataService:DataService)  {}
+  constructor(private neovisService:NeovisService, private dataService:DataService)  {}
   
   // variables
   viz:any;
@@ -27,7 +26,7 @@ export class GraphComponent implements OnInit {
     this.myForm =  this.dataService.retrieveForm();
     
     // initiate a service to draw graph
-    this.viz = this.graphService.draw(this.myForm.university,this.myForm.researchers,this.myForm.year);
+    this.viz = this.neovisService.draw(this.myForm.university,this.myForm.researchers,this.myForm.year);
 
     this.viz.render();
     
@@ -37,19 +36,6 @@ export class GraphComponent implements OnInit {
     }, 2000)
     
     
-    
-    // render the visualization
-    // if (this.result == true){
-
-    //   // this.spinner = false;
-    //   this.isHidden = false;
-    //   this.spinner = false;
-    // }
-
-   
-    
-
-
   }
 
   // on destroy, clear the draw network

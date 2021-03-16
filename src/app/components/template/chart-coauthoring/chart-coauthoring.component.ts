@@ -34,8 +34,6 @@ export class ChartCoauthoringComponent implements OnInit {
     
     this.neo4jService.getCoauthoring(researcher.id).then(el =>{
 
-      console.log(el)
-
       el[0].records.forEach( record =>{
         this.years.push(record._fields[1].low);
         this.authorCoauthorShip.push(record._fields[0].low)
@@ -59,19 +57,18 @@ export class ChartCoauthoringComponent implements OnInit {
       
       })}
       
-      // else if (!(researcher.seed)){
-  
-      //   this.dataService.getPublication(researcher.id).then(el =>{
-      //     el[0].records.forEach( record =>{
-      //       this.years.push(record._fields[0].low);
-      //       this.publications.push(record._fields[1].low)
-            
-      //     })
-    
-      //   })
-  
-      // }
-      
+   
+}
+
+ngOnDestroy(){
+  this.years=[];
+  this.publications=[];
+  this.loaded=false;
+  this.authorCoauthorShip=[];
+  this.medium=[];
+  this.highest=[];
+  this.lowest=[];
+ 
 }
   
 

@@ -18,11 +18,7 @@ export class ChartPublicationComponent implements OnInit {
   publications:any[]=[];
   loadedPublications: boolean = false;
 
-  ngOnInit() {
-
-    this.getPublications();
-
-  }
+  ngOnInit() {this.getPublications();}
 
   ngOnDestroy(){
     this.years=[];
@@ -34,22 +30,21 @@ export class ChartPublicationComponent implements OnInit {
 
     const researcher = this.dataService.retrieveObj();
 
-    this.neo4jService.getPublications(researcher.id).then(el =>{
-
-  
-      el[0].records.forEach( record =>{
-        this.years.push(record._fields[1]);
-        this.publications.push(record._fields[0].low)
+    this.neo4jService.getPublications(researcher.id).then( result =>{
         
-      })
-
-      this.loadedPublications =true;
-      
-      })
+      result.records.forEach(record => {
+        this.publications.push(record.get('amount').low);
+        this.years.push(record.get('year'))
+        
+      });
+      this.loadedPublications=true;
+    });
 
   }
 
-   barChartOptions: ChartOptions = {
+
+
+  barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{ticks:{
@@ -63,10 +58,7 @@ export class ChartPublicationComponent implements OnInit {
     }
   };
 
-
-  // public barChartLabels: Label[] = ["2006", "2007", '2008', '2009', '2010', '2011', '2012'];
   public barChartLabels: Label[] = this.years;
-
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
@@ -77,7 +69,6 @@ export class ChartPublicationComponent implements OnInit {
     { backgroundColor: '#FFFF99' },
     { backgroundColor: '#CCFF99' },
   ]
-
 
   public barChartData: ChartDataSets[] = [
     { data: this.publications, label: 'Author Publications' },

@@ -22,9 +22,11 @@ export class SocialNetworkComponent implements OnInit {
   universitys:University[]=[];
   researchers:Researcher[]=[];
   myForm:FormGroup;
-  year: FormArray;
   rangeValues: number[] = [1973,2021];
-
+  visualizators:any[]=[
+    {name:'3D-force',value:0},
+    {name:'Neovis',value:1}
+  ]
 
   // function thats called upon component starts
   ngOnInit(): void {
@@ -32,7 +34,6 @@ export class SocialNetworkComponent implements OnInit {
     //populate arrays and build form
     this.neo4jService.getUniversitys(this.universitys);
     this.buildForm();
-
 
   }
 
@@ -42,12 +43,18 @@ export class SocialNetworkComponent implements OnInit {
      this.myForm = this.fb.group({
      university:[[null],Validators.required],
      researchers:[[null],Validators.required],
-     year:[[0,100],Validators.required]
-    //  year:this.fb.array([],Validators.required),
+     year:[[1973,2021],Validators.required],
+     visualizator:[null,Validators.required]
     
   })
   // this.createYear();
-  
+
+  //every chenge in fiel year, set in rangeValues too.
+  this.myForm.get("year").valueChanges.subscribe(val => {
+   
+    this.rangeValues[0] = val[0];
+    this.rangeValues[1] = val[1];
+  });
 }
 
 // create an year control, then add to formArray of years
@@ -63,20 +70,6 @@ createYear(){
    
 }
 
-// create a new venue control, if field is checked
-// onChange(venue: string, isChecked: boolean) {
-
-//   const venuesFormArray = (this.myForm.controls.venues as FormArray);
-
-//   if (isChecked) {
-//     venuesFormArray.push(new FormControl(venue));
-//   } else {
-//     const index = venuesFormArray.controls.findIndex(x => x.value == venue);
-//     venuesFormArray.removeAt(index);
-//   }
-// }
-
-
 // get all seeds with given university
 getSeeds():void{ 
 
@@ -89,25 +82,37 @@ getSeeds():void{
 
   }
 
-// navigate to graph component
 navigateToGraphComponent(): void{
     
   // save form data before go next component
   this.dataService.saveForm(this.myForm.value);
 
-  this.router.navigate(['socialnetwork/graph/force']);
+  switch (this.myForm.value.visualizator) {
+    
+    case 0:
+    
+    this.router.navigate(['socialnetwork/graph/force']);
+      
+    break;
+    
+    case 1:
+
+    this.router.navigate(['socialnetwork/graph/neovis']);
+  
+    break;
+    
+  }
 
 }
 
-// navigate to home component
-navigateToHomeComponent():void{
-  this.router.navigate(['']);
-}
+
+navigateToHomeComponent():void{this.router.navigate(['']);}
 
 // destroy the component, emptying arrays
 ngOnDestroy():void{
   this.universitys=[];
   this.researchers=[];
+
 }
 
 }

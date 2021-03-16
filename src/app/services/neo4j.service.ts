@@ -4,6 +4,7 @@ import { Researcher } from 'src/model/researcher.model';
 import { University } from 'src/model/university.model';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash';
+import { auth } from 'neo4j-driver';
 
 
 
@@ -14,13 +15,7 @@ export class Neo4jService {
 
   constructor() { }
 
-  // hostPort = environment.HOST_PORT;
-  // user = environment.USER;
-  // password = environment.PASSWORD;
-  // trust: "TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"
-
-
-  driver =  neo4j.driver(environment.HOST_PORT,neo4j.auth.basic(environment.USER,environment.PASSWORD),{encrypted: "ENCRYPTION_OFF"},{trust:"TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"});
+  driver =  neo4j.driver(environment.HOST_PORT,neo4j.auth.basic(environment.USER,environment.PASSWORD),{encrypted: "ENCRYPTION_OFF"},{trust:"TRUST_ALL_CERTIFICATES"});
 
   //get a list of all universitys
   getUniversitys(universitys:University[]):void{ 
@@ -88,25 +83,13 @@ getSeeds(university:string,seeds:Researcher[]):void{
     
     // result with userId,name and seed properties, ordered by name
     const result =  await session.run(`MATCH(a:Author) WHERE  a.name=~'(?i)${name} .*' OR a.name=~'(?i).* ${name}'
-                                      OR a.name=~'(?i).* ${name} .*' return id(a) as id, a.name as name, a.seed as seed order by a.name asc`,{})
+                                      OR a.name=~'(?i).* ${name} .*' OR a.name=~'(?i)${name}' return id(a) as id, a.name as name, a.seed as seed order by a.name asc`,{})
     
     await session.close();
 
     return result;
 
   }
-
-
-  // async getAuthors(){
-  //   const session = await this.driver.session();
-
-  //   const result =  await session.run('MATCH (a:Author)-[rel:ASSOCIATED_TO]-(i:Institution{name:"UnB"}) return a,rel,i');
-
-  //   await session.close();
-  
-  //   return result;
-  // }
-
 
   async getNetwork(university:University,researchers:Researcher[],years:number[]){
 
@@ -174,7 +157,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
   // get publications by year from an author
   async getPublications(id:number){
 
-    const promises=[];
+    // const promises=[];
     const session =  await this.driver.session();
   
     const result =  await session.run(`MATCH (a:Author)-[au:AUTHORING]-(p:Publication)
@@ -183,13 +166,13 @@ getSeeds(university:string,seeds:Researcher[]):void{
 
     WITH p.year as year,count(p) as amount
     
-    return amount,year order by year`,{})
+    return amount,year order by year`,{});
   
-    promises.push(result);
+    // promises.push(result);
 
     session.close();
 
-    return promises
+    return result
 
   }
 

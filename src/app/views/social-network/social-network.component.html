@@ -1,100 +1,8 @@
-
-<!-- <mat-card class="card mat-elevation-z3">
-
-    <mat-card-title class="title">Filters</mat-card-title>
-
-<form>
-
-University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<mat-form-field>
-
-<mat-select placeholder="Select"[(value)]="selectedUniversity" (selectionChange)="getSeeds()">
-    
-    <mat-option *ngFor="let university of universitys" [value]="university.name">
-         
-        {{university.name}}
-
-
-    </mat-option>
-    
-</mat-select>
-
-</mat-form-field>
-
-<br>
-
-Researcher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<mat-form-field> 
-    <mat-select placeholder="Select" 
-    name="Select" [(ngModel)]="selectedResearchers" multiple="true"  #selectionModel="ngModel" [ngModelOptions]="{standalone: true}">
-        <app-select-check-all [model]="selectionModel"
-        
-                          [values]="seeds">
-                          
-    </app-select-check-all>
-    
-    <mat-option *ngFor="let seed of seeds" [value]="seed.id">
-         
-    {{seed.name}}
-
-    </mat-option>
-        
-    </mat-select>
-
-    
-
-</mat-form-field>
-<br>
-
-Type Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<mat-radio-group class="radio-group" [(ngModel)]="selectedLink.name" [ngModelOptions]="{standalone: true}">
-
-
-  <mat-radio-button class="radio-button"value="AUTHORING">Publications</mat-radio-button>
-
-</mat-radio-group>
-
-Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<mat-form-field> 
-    <mat-select placeholder="Select" 
-    name="Select" [(ngModel)]="selectedVenues" multiple="true"  #selectionModel="ngModel" [ngModelOptions]="{standalone: true}">
-        <app-select-check-all [model]="selectionModel"
-        
-                          [values]="venues">
-                          
-    </app-select-check-all>
-    
-    <mat-option *ngFor="let venue of venues" [value]="venue.type">
-         
-    {{venue.type}}
-
-    </mat-option>
-        
-    </mat-select>
-
-    
-
-</mat-form-field>
-
-</form>
-<br>
-
-<button mat-button color="primary" mat-raised-button (click)="navigateToGraphComponent()"> Apply </button>&nbsp;&nbsp;
-<button mat-button color="warn" mat-raised-button (click)="navigateToHomeComponent()"> Cancel </button>
-
-</mat-card>
-
-<br> -->
-
 <mat-card class="card mat-elevation-z3">
     <mat-card-title>Refine By</mat-card-title>
+    
     <mat-card-subtitle>Use filters below to refine your coauthorship search.</mat-card-subtitle>
 
-    <!-- {{myForm.value | json}} -->
     <mat-card-content>
     <form [formGroup]="myForm">
         
@@ -125,62 +33,35 @@ Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     {{researcher.name}}
 
                 </mat-option>
-        
+                
             </mat-select>
         </mat-form-field>
         <mat-error *ngIf="myForm.controls['researchers'].hasError('required') && myForm.controls['researchers'].touched"> Select at least one Researcher.</mat-error>
         
-        <!-- Venue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <mat-checkbox color="warn" *ngFor="let venue of venues" (change)="onChange(venue.id,$event.checked)">
+        <br>Library&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-form-field>
+            <mat-select formControlName="visualizator" placeholder="Select a Library.">
+                <mat-option>---</mat-option>
+                <mat-option *ngFor="let visualizator of visualizators" [value]="visualizator.value"> 
+                    {{visualizator.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="myForm.controls['visualizator'].hasError('required') && myForm.controls['visualizator'].touched"> Select at least one Library.</mat-error>
+        </mat-form-field>
         
-            <span class="div-checkbox"> {{venue.name}}</span>
-            
-        </mat-checkbox>
-
-         <mat-error *ngIf="myForm.controls['university'].hasError('required') && myForm.controls['university'].touched"> Select at least one University.</mat-error>
-        
-       -->
-       <!-- <br>Year: {{rangeValues[0] + ' - ' + rangeValues[1]}}&nbsp;&nbsp;<br> -->
-       <div class="div-slider">
-        <h4>Year: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h4>
-        <p-slider formControlName="year" [(ngModel)]="rangeValues" [range]="true" [min]="1973" [max]="2021"></p-slider>
+        <div class="div-slider">
+            <h4>Year Range: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h4>
+            <p-slider formControlName="year"  [range]="true" [min]="1973" [max]="2021"></p-slider>
         </div>
-
-    
-         <!-- <div formArrayName="year">
-            
-        <div *ngFor="let year of myForm.controls.year['controls']; let i=index;" [formGroupName]="i" class="row">
-            Year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-form-field>
-                From:<br>
-                
-                <input matInput type="number" min="1973" max="2020" formControlName="from">
-                <mat-hint>min year: 1973</mat-hint>
-            </mat-form-field>
-        
-            &nbsp;&nbsp;
-            <mat-form-field>
-                To:<br>
-                <input matInput type="number"  min="1973" max="2020" formControlName="to">
-                <mat-hint>max year:2020</mat-hint>
-            </mat-form-field>
-         </div>
-       </div>  -->
-           
     </form>
-
     </mat-card-content>
-
+        
     <mat-card-actions>
         <button mat-button color="primary" mat-raised-button [disabled]="!myForm.valid" (click)="navigateToGraphComponent()"> Apply </button>&nbsp;&nbsp;
         <button mat-button color="warn" mat-raised-button (click)="navigateToHomeComponent()"> Cancel </button>
     </mat-card-actions>
-    
-    
+ 
 </mat-card>
-
-
 
 <!-- {{myForm.value | json}} -->
 
