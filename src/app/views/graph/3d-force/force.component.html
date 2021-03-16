@@ -1,7 +1,8 @@
 
+<div class=graph-actions>
+    <mat-icon  matTooltip="Open in full screen." (click)="openFullscreen()">open_in_full</mat-icon>
+</div>
+
 <mat-progress-bar *ngIf="!dataIsLoaded" mode="indeterminate"></mat-progress-bar>
 
-<!-- <mat-spinner *ngIf="!dataIsLoaded" mode="indeterminate"> </mat-spinner> -->
- <!-- <div id="not-loaded" *ngIf="!dataIsLoaded"></div> -->
-
-<div id="graph"></div>
+<div id="viz" #fullScreen></div>

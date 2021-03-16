@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import ForceGraph3D from '3d-force-graph';
 import { Neo4jService } from 'src/app/services/neo4j.service';
 import { DataService } from 'src/app/services/data.service';
@@ -13,6 +13,7 @@ export class ForceComponent implements OnInit {
   
   graph:any;
   dataIsLoaded:Boolean=false;
+  @ViewChild('fullScreen') divRef;
   
   constructor(private neo4jService:Neo4jService,private dataService:DataService) { }
 
@@ -72,10 +73,29 @@ export class ForceComponent implements OnInit {
     
 
     this.graph = ForceGraph3D()
-       (document.getElementById('graph'))
+       (document.getElementById('viz'))
       .graphData(graphData).nodeLabel('label')
       .nodeAutoColorBy('group')
       .nodeVal('size')
       
     }
+
+     // perform fullscreen
+  openFullscreen() {
+    // Use this.divRef.nativeElement here to request fullscreen
+    const elem = this.divRef.nativeElement;
+  
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    }
+  }
+
+
+
 }

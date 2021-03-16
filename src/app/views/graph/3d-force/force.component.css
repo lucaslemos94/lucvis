@@ -1,5 +1,19 @@
 
-#graph{
-    width: fit-content;
-    height: fit-content;
+#viz{
+    position: absolute;
+    max-height: 100%;
+    max-width: 90%;
 }
+
+.graph-actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:baseline;
+    background-color:rgb(255, 255, 255);
+    
+}
+
+.material-icons {
+    font-size:25px;
+    cursor: pointer;
+ }

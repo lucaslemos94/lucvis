@@ -4,21 +4,16 @@
     height: 100%;
     width: 90%;
     background-color:rgb(255, 255, 255);
-   
-    /* padding:0; */
 
-    /* margin-top: 100px; */
-    /* margin-bottom: 500px;*/
+    
 }
 
 .graph-actions{
     display:flex;
     justify-content:flex-end;
     align-items:baseline;
-    /* height: 1000px; */
     background-color:rgb(255, 255, 255);
     
-
 }
 
 .material-icons {
@@ -26,15 +21,6 @@
    cursor: pointer;
 }
 
-
-/* .graph-actions{
-    margin: 10px;
-    padding: 10px;
-} */
-
-/* .cached{
-    font-size: 30px;
-} */
 
 
 

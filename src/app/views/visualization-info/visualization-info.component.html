@@ -1,4 +1,6 @@
-<mat-card class="vis mat-elevation-z3">
+<div fxLayout="column">
+
+<mat-card class="info">
 
     <mat-card-title style="text-align:center" class="title">Degree</mat-card-title>
     <mat-card-content>
@@ -7,7 +9,27 @@
         <p><b>What it tells us:</b> Nodes to a greater degree tell us that there are a lot of direct connections to other nodes in the graph. On the other hand, a lesser degree tells us that there are few direct connections between these nodes.</p>
 
         <p><b>Visualization Context:</b> The degree of each node is used to determine its <b>size</b> when generating the visualization. To prevent disproportionate views, a relative size is applied to each node.</p>
-
     </mat-card-content>
-
 </mat-card>
+
+
+<mat-card class="info">
+
+    <mat-card-title style="text-align:center" class="title">Community</mat-card-title>
+    <mat-card-content>
+        <p><b>Definition:</b> Communities are groups of nodes that are very likely to share common properties on a network. A related theme is community detection, where the goal is to find a community that a certain node belongs to.</p>
+        
+        <p><b>What it tells us:</b> The more general definition is based on the principle that pairs of nodes are more likely to be connected if they are both members of the same community (ies), and less likely to be connected if they do not share communities.</p>
+
+        <p><b>Visualization Context:</b> The <b>Louvain</b> algorithm is used to determine the community a node belongs, resulting in different colors to ilustrate these groups.
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="info">
+    <mat-card-content>
+        All definitions collected from Book <b>Graph Theory with Applications - John Adrian Bondy, U. S. R. Murty</b>
+    </mat-card-content>
+</mat-card>
+
+</div>
+
