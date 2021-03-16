@@ -12,8 +12,7 @@ export const environment = {
    year:{
       from:1973,
       to: 2021
-   },
-   
+   } 
 };
 
 /*
