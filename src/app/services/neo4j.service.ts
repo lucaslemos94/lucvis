@@ -14,7 +14,7 @@ export class Neo4jService {
 
   constructor() { }
 
-  driver =  neo4j.driver(environment.HOST_PORT,neo4j.auth.basic(environment.USER,environment.PASSWORD),{encrypted: "ENCRYPTION_ON",trust:"TRUST_SYSTEM_CA_SIGNED_CERTIFICATES"});
+  driver =  neo4j.driver(environment.HOST_PORT,neo4j.auth.basic(environment.USER,environment.PASSWORD),{encrypted: "ENCRYPTION_ON",trust:"TRUST_CUSTOM_CA_SIGNED_CERTIFICATES"});
 
   //get a list of all universitys
   getUniversitys(universitys:University[]):void{ 
