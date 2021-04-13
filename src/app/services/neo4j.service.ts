@@ -19,7 +19,8 @@ export class Neo4jService {
   //get a list of all universitys
   getUniversitys(universitys:University[]):void{ 
    
-    const session = this.driver.session();
+    const session = this.driver.session({database: environment.DATABASE});
+  
 
     session
       .run('MATCH (i:Institution) return i.name as name ORDER BY name ASC', {})
@@ -50,7 +51,7 @@ export class Neo4jService {
 //get all seed researchers from given university
 getSeeds(university:string,seeds:Researcher[]):void{
 
-  const session = this.driver.session();
+  const session = this.driver.session({database: environment.DATABASE});
 
   session
     .run('MATCH (a:Author)-[:ASSOCIATED_TO]-(:Institution{name:$university}) return a  ORDER BY a.name ASC',{university})
@@ -78,7 +79,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
   // get a list of researchers from with given name
   async getResearchers(name:string){
 
-    const session = await this.driver.session();
+    const session = await this.driver.session({database: environment.DATABASE});
     
     // result with userId,name and seed properties, ordered by name
     const result =  await session.run(`MATCH(a:Author) WHERE  a.name=~'(?i)${name} .*' OR a.name=~'(?i).* ${name}'
@@ -92,7 +93,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
 
   async getNetwork(university:University,researchers:Researcher[],years:number[]){
 
-    const session =  await this.driver.session();
+    const session =  await this.driver.session({database: environment.DATABASE});
 
     let result = null;
 
@@ -119,7 +120,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
     const promises=[];
     const years=[];
   
-    const session = await this.driver.session();
+    const session = await this.driver.session({database: environment.DATABASE});
   
     const result =  await session.run(`MATCH (a1:Author)-[co:COAUTHOR]-(a2:Author) WHERE id(a1)=${id} return count(co) as amount,co.year as year order by year`,{})
   
@@ -157,7 +158,7 @@ getSeeds(university:string,seeds:Researcher[]):void{
   async getPublications(id:number){
 
     // const promises=[];
-    const session =  await this.driver.session();
+    const session =  await this.driver.session({database: environment.DATABASE});
   
     const result =  await session.run(`MATCH (a:Author)-[au:AUTHORING]-(p:Publication)
 
