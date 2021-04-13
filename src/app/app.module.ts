@@ -30,7 +30,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
@@ -41,6 +41,8 @@ import { SigmaComponent } from './views/graph/sigma/sigma.component';
 import { ForceComponent } from './views/graph/3d-force/force.component';
 import {SliderModule} from 'primeng/slider';
 import { VisualizationInfoComponent } from './views/visualization-info/visualization-info.component';
+import { UniversitysChartComponent } from './components/template/universitys-chart/universitys-chart.component';
+import { UniversitiesNetworkComponent } from './universities-network/universities-network.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { VisualizationInfoComponent } from './views/visualization-info/visualiza
     SigmaComponent,
     ForceComponent,
     VisualizationInfoComponent,
+    UniversitysChartComponent,
+    UniversitiesNetworkComponent,
    
   ],
   imports: [
