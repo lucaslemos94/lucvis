@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   HOST_PORT : 'bolt://162.214.89.195:7687',
-   PASSWORD : 'lucvis',
+   PASSWORD : 'scisynergy',
    USER : 'neo4j',
    DATABASE:'lucvis',
    year:{
