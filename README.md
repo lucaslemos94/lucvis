@@ -8,7 +8,12 @@ For the formation of the database for the construction of the social network, in
   - [Angular Framework](https://angular.io/) (Typescript / Javascript, HTML, CSS)
   - Graph-based Database System [Neo4j](https://neo4j.com)
   - Javascript libraries for visualization of graph-based data: [3d-Force](https://github.com/vasturiano/3d-force-graph), [Neovis](https://github.com/neo4j-contrib/neovis.js)
+
+# Lucvis Architecture
+![alt text](https://github.com/lucaslemos94/lucvis/blob/master/arquitetura-lucvis.png?raw=true)
+
 # Screenshots
+
 ![alt text](https://github.com/lucaslemos94/lucvis/blob/master/screenshot_1.JPG?raw=true)
 ![alt text](https://github.com/lucaslemos94/lucvis/blob/master/screenshot_2.JPG?raw=true)
 ![alt text](https://github.com/lucaslemos94/lucvis/blob/master/screenshot_3.JPG?raw=true)
