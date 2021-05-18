@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import ForceGraph3D from '3d-force-graph';
 import { Neo4jService } from 'src/app/services/neo4j.service';
 import { DataService } from 'src/app/services/data.service';
+import  SpriteText  from 'three-spritetext';
+import {CSS2DRenderer, CSS2DObject} from 'three-css2drender'
 
 
 @Component({
@@ -37,7 +39,7 @@ export class ForceComponent implements OnInit {
     const result =  await this.neo4jService.getNetwork(universitys,researchers,years);
 
    
-    const duplicateEdges = result.records.map(r => {return {id:r.get('co').identity.low,source:r.get('co').start.low, target:r.get('co').end.low}});
+    const duplicateEdges = result.records.map(r => {return {id:r.get('co').identity.low,source:r.get('co').start.low, target:r.get('co').end.low,value:r.get('co').properties.weight}});
   
     const duplicateNodes = [];
   
@@ -70,15 +72,51 @@ export class ForceComponent implements OnInit {
   // draw graph
   draw(graphData:any){
 
-    
-
     this.graph = ForceGraph3D()
        (document.getElementById('viz'))
       .graphData(graphData).nodeLabel('label')
       .nodeAutoColorBy('group')
       .nodeVal('size')
+      //.backgroundColor('white')
+      .nodeThreeObjectExtend(true)
+      .nodeThreeObject(node => {
+        const transform = <any>node;
+        const nodeEl = document.createElement('div');
+        nodeEl.textContent = transform.label;
+        // nodeEl.style.color = node
+         nodeEl.className = 'node-label';
+        return new CSS2DObject(nodeEl);
+      })
+      .linkThreeObjectExtend(true)
+      .linkPositionUpdate((sprite, { start, end }) => {
+
+        const middlePos = Object.assign(start,...['x', 'y', 'z'].map(c => ({
+          [c]: start[c] + (end[c] - start[c]) / 2 })));
+          
+        // Position sprite
+        Object.assign(sprite.position, middlePos);
+
+        
+        return true;
+      });
       
-    }
+       // Spread nodes a little wider
+    this.graph.d3Force('charge').strength(-120);
+    
+    this.setLinksNames();
+  }
+
+   setLinksNames() {
+    this.graph.linkThreeObject((link) => {
+      // extend link with text sprite
+      const sprite = new SpriteText(`${link.value}`);
+      sprite.color = "white";
+      sprite.textHeight = 2.5;
+      return sprite;
+    });
+  }
+      
+
 
      // perform fullscreen
   openFullscreen() {

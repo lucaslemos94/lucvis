@@ -31,8 +31,6 @@ export class UniversitysChartComponent implements OnInit {
             "#E7E9ED",
             "#36A2EB"
             ],
-            padding:100
-  
 }
 
 }

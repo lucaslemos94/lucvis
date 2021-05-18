@@ -25,7 +25,7 @@ export class SocialNetworkComponent implements OnInit {
   rangeValues: number[] = [1973,2021];
   visualizators:any[]=[
     {name:'3D-force',value:0},
-    {name:'Neovis',value:1}
+    // {name:'Neovis',value:1}
   ]
 
   // function thats called upon component starts

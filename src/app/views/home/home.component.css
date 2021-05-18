@@ -1,7 +1,30 @@
 
-.title{
+.mat-card{
+    width: 50%;
+    margin-top: 1%;  
+}
+
+.mat-card-title{
     font-size: 1.5rem;
     /* font-weight: 100; */
     line-height: 1.2;
+    text-align: center;
 }
+
+.home{
+    width: 100%;
+    height: 10%;
+    margin-top: 0%;
+}
+
+.card3{
+    width: 100%;
+}
+
+
+/* .title-welcome{
+    text-align: center;
+} */
+
+
 

@@ -111,6 +111,21 @@ getSeeds(university:string,seeds:Researcher[]):void{
     return result;
     
   }
+
+  async getUniversitiesNetwork(){
+
+
+    const session =  await this.driver.session({database: environment.DATABASE});
+
+    let result = null;
+
+    result = await session.run(`MATCH (i1:Institution)-[]-(a1:Author)-[]-(p:Publication)-[]-(a2:Author)-[]-(i2:Institution) WHERE id(i1) <= id(i2) RETURN ID(i1), ID(i2), i1.name, i2.name, i1.color, i2.color,count(p)`);
+    
+    session.close();
+
+    return result;
+
+  }
     
 
 

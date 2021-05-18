@@ -42,7 +42,8 @@ import { ForceComponent } from './views/graph/3d-force/force.component';
 import {SliderModule} from 'primeng/slider';
 import { VisualizationInfoComponent } from './views/visualization-info/visualization-info.component';
 import { UniversitysChartComponent } from './components/template/universitys-chart/universitys-chart.component';
-import { UniversitiesNetworkComponent } from './universities-network/universities-network.component';
+import { UniversitiesNetworkComponent } from './components/template/universities-network/universities-network.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { UniversitiesNetworkComponent } from './universities-network/universitie
     MatTooltipModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    SliderModule 
+    SliderModule,
+    FlexLayoutModule,
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,

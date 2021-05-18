@@ -41,6 +41,9 @@
     "rxjs": "~6.5.4",
     "sigma": "1.2.1",
     "sigma-webpack": "^1.2.0-1",
+    "three": "^0.127.0",
+    "three-css2drender": "^1.0.0",
+    "three-spritetext": "^1.6.1",
     "tslib": "^2.1.0",
     "zone.js": "~0.10.2"
   },
