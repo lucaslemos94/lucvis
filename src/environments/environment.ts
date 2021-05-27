@@ -4,9 +4,9 @@
 
 export const environment = {
    production: false,
-   HOST_PORT : 'bolt://162.214.89.195:7687',
-   // HOST_PORT : 'bolt://localhost:7687',
-   DATABASE:'lucvis',
+   //HOST_PORT : 'bolt://162.214.89.195:7687',
+   HOST_PORT : 'bolt://localhost:7687',
+   DATABASE:'neo4j',
    USER : 'neo4j',
    PASSWORD : 'scisynergy',
    year:{
