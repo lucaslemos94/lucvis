@@ -48,8 +48,8 @@
             "aot": true,
             "assets": [
               "src/assets",
-              "src/assets/img/favicon.png",
-              {"glob": "**/*", "input":"./node_modules/sigma/build", "output": "/assets/lib"}
+              "src/assets/img/favicon.png"
+              
             
             ],
             "styles": [
@@ -59,8 +59,7 @@
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": ["src/assets/lib/sigma/sigma.conf.js","node_modules/sigma/build/sigma.min.js","node_modules/sigma/build/plugins/sigma.plugins.dragNodes.min.js","node_modules/sigma/build/plugins/sigma.layout.forceAtlas2.min.js","node_modules/sigma/build/plugins/sigma.plugins.dragNodes.min.js","node_modules/sigma/build/plugins/sigma.neo4j.cypher.min.js",
-              "node_modules/sigma/build/plugins/sigma.parsers.json.min.js"],
+            "scripts": [],
             "allowedCommonJsDependencies": ["chart.js","chartjs-plugin-datalabels","tinycolor2","ngraph.graph","ngraph.forcelayout","@babel/runtime/helpers/construct","lodash"]
           },
           "configurations": {
