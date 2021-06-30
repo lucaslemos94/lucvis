@@ -36,7 +36,7 @@
     "ng2-charts": "^2.4.2",
     "primeicons": "^4.1.0",
     "primeng": "^11.3.1",
-    "rxjs": "~7.1.0",
+    "rxjs": "^6.5.3",
     "three": "^0.127.0",
     "three-css2drender": "^1.0.0",
     "three-spritetext": "^1.6.1",
