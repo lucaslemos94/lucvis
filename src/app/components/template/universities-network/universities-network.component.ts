@@ -92,12 +92,10 @@ export class UniversitiesNetworkComponent implements OnInit {
     result.records.forEach(r => { 
       duplicateNodes.push({id: r.get('ID(i1)').low, label: r.get('i1.name'),color:r.get('i1.color')});
       duplicateNodes.push({id: r.get('ID(i2)').low, label: r.get('i2.name'),color:r.get('i2.color')});
-      duplicateNodes.push({id:666, label: 'UnB', color:r.get('i1.color')});
-      
       edges.push({source: r.get('ID(i1)').low, target:r.get('ID(i2)').low,value:r.get('count(p)'),color:'black'});
     });
 
-    // duplicateNodes.push({id: 666, label: 'UnB',color:'green'})
+      duplicateNodes.push({id: 666, label: 'UnB',color:'#E466CB'})
     // edges.push({source:})
 
     
