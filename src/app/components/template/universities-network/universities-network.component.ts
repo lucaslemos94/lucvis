@@ -27,8 +27,6 @@ export class UniversitiesNetworkComponent implements OnInit {
   // draw graph
   draw(graphData:any){
 
-  
-
     this.graph = ForceGraph3D({extraRenderers: [new CSS2DRenderer()]})
        (document.getElementById('viz'))
       .graphData(graphData)
@@ -94,8 +92,13 @@ export class UniversitiesNetworkComponent implements OnInit {
     result.records.forEach(r => { 
       duplicateNodes.push({id: r.get('ID(i1)').low, label: r.get('i1.name'),color:r.get('i1.color')});
       duplicateNodes.push({id: r.get('ID(i2)').low, label: r.get('i2.name'),color:r.get('i2.color')});
-      edges.push({source: r.get('ID(i1)').low, target:r.get('ID(i2)').low,value:r.get('count(p)'),color:'black',curvature: 0.2});
+      duplicateNodes.push({id:666, label: 'UnB', color:r.get('i1.color')});
+      
+      edges.push({source: r.get('ID(i1)').low, target:r.get('ID(i2)').low,value:r.get('count(p)'),color:'black'});
     });
+
+    // duplicateNodes.push({id: 666, label: 'UnB',color:'green'})
+    // edges.push({source:})
 
     
     // result.records.forEach(r => {
