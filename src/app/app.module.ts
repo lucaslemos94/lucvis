@@ -19,9 +19,14 @@ import { ResearcherReportComponent } from './views/researcher-report/researcher-
 import { ChartCoauthoringComponent } from './components/template/chart-coauthoring/chart-coauthoring.component';
 import { ChartPublicationComponent } from './components/template/chart-publication/chart-publication.component'
 import { TableResearchersComponent } from './components/template/table-researchers/table-researchers.component';
+import { VisualizationInfoComponent } from './views/visualization-info/visualization-info.component';
+import { UniversitysChartComponent } from './components/template/universitys-chart/universitys-chart.component';
+import { UniversitiesNetworkComponent } from './components/template/universities-network/universities-network.component';
+import { ForceComponent } from './views/graph/3d-force/force.component';
+
 
 // material modules
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
@@ -30,20 +35,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { SigmaComponent } from './views/graph/sigma/sigma.component';
-import { ForceComponent } from './views/graph/3d-force/force.component';
+
+
+//other modules
+import {ChartsModule} from 'ng2-charts';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {SliderModule} from 'primeng/slider';
-import { VisualizationInfoComponent } from './views/visualization-info/visualization-info.component';
-import { UniversitysChartComponent } from './components/template/universitys-chart/universitys-chart.component';
-import { UniversitiesNetworkComponent } from './components/template/universities-network/universities-network.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ChartCoauthoringComponent,
     TableResearchersComponent,
     ChartPublicationComponent,
-    SigmaComponent,
     ForceComponent,
     VisualizationInfoComponent,
     UniversitysChartComponent,

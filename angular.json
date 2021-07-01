@@ -60,7 +60,7 @@
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["chart.js","chartjs-plugin-datalabels","tinycolor2","ngraph.graph","ngraph.forcelayout","@babel/runtime/helpers/construct","lodash"]
+            "allowedCommonJsDependencies": ["three-css2drender","chart.js","chartjs-plugin-datalabels","tinycolor2","ngraph.graph","ngraph.forcelayout","@babel/runtime/helpers/construct","lodash"]
           },
           "configurations": {
             "production": {
