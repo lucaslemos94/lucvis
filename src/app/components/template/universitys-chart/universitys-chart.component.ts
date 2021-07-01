@@ -22,7 +22,7 @@ export class UniversitysChartComponent implements OnInit {
   // createChart(){
     
   public pieChartLabels= ["UnB", "USP", "UFRN", "UFAM", "UFMG"];
-  public pieChartData = [26, 38, 24, 36, 55];
+  public pieChartData = [31, 37, 29, 36, 61];
   public pieChartType= 'pie';
   public pieChartOptions= {'backgroundColor': [
                "#FF6384",

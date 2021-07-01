@@ -27,8 +27,6 @@ export class UniversitiesNetworkComponent implements OnInit {
   // draw graph
   draw(graphData:any){
 
-  
-
     this.graph = ForceGraph3D({extraRenderers: [new CSS2DRenderer()]})
        (document.getElementById('viz'))
       .graphData(graphData)
@@ -80,38 +78,55 @@ export class UniversitiesNetworkComponent implements OnInit {
     });
   }
   
-
-
   async graphData(){
 
-    const result =  await this.neo4jService.getUniversitiesNetwork();
-
-   
+    // const result =  await this.neo4jService.getUniversitiesNetwork();
 
     const duplicateNodes = [];
     const edges =[];
 
-    result.records.forEach(r => { 
-      duplicateNodes.push({id: r.get('ID(i1)').low, label: r.get('i1.name'),color:r.get('i1.color')});
-      duplicateNodes.push({id: r.get('ID(i2)').low, label: r.get('i2.name'),color:r.get('i2.color')});
-      edges.push({source: r.get('ID(i1)').low, target:r.get('ID(i2)').low,value:r.get('count(p)'),color:'black',curvature: 0.2});
-    });
-
-    
-    // result.records.forEach(r => {
-
-    //   edges.push({source: r.get('ID(i1)').low, target:r.get('ID(i2)').low,curvature: 0.8});
-    //   // edges.push({source: r.get('ID(i2)').low, target:r.get('ID(i1)').low});
+    // result.records.forEach(r => { 
+    //   duplicateNodes.push({id: r.get('ID(i1)').low, label: r.get('i1.name'),color:r.get('i1.color')});
+    //   duplicateNodes.push({id: r.get('ID(i2)').low, label: r.get('i2.name'),color:r.get('i2.color')});
+    //   edges.push({source: r.get('ID(i1)').low, target:r.get('ID(i2)').low,value:r.get('count(p)'),color:'black'});
     // });
 
- 
-  
+      duplicateNodes.push({id: 1, label: 'UnB',color:'#E466CB'});
+      duplicateNodes.push({id: 2, label: 'UFAM',color:'#00FFFF'});
+      duplicateNodes.push({id: 3, label: 'UFMG',color:'#FFFF00'});
+      duplicateNodes.push({id: 4, label: 'USP',color:'#800000'});
+      duplicateNodes.push({id: 5, label: 'UFRN',color:'#89F6C7'});
+
+      duplicateNodes.push({id: 111, label: 'UnB',color:'#E466CB'});
+      duplicateNodes.push({id: 222, label: 'UFAM',color:'#00FFFF'});
+      duplicateNodes.push({id: 333, label: 'UFMG',color:'#FFFF00'});
+      duplicateNodes.push({id: 444, label: 'USP',color:'#800000'});
+      duplicateNodes.push({id: 555, label: 'UFRN',color:'#89F6C7'});
+
+      edges.push({source:1, target:111, value:512,color:'black'})
+      edges.push({source:2, target:222, value:764,color:'black'})
+      edges.push({source:3, target:333, value:3498,color:'black'})
+      edges.push({source:4, target:444, value:564,color:'black'})
+      edges.push({source:5, target:555, value:526,color:'black'})
+
+      edges.push({source:1, target:3, value:67,color:'black'})
+      edges.push({source:1, target:5, value:27,color:'black'})
+      edges.push({source:1, target:4, value:9,color:'black'})
+      
+      edges.push({source:2, target:3, value:410,color:'black'})
+      edges.push({source:2, target:4, value:12,color:'black'})
+      
+      edges.push({source:3, target:2, value:410,color:'black'})
+      edges.push({source:3, target:4, value:3,color:'black'})
+      edges.push({source:3, target:5, value:28,color:'black'})
+      edges.push({source:3, target:1, value:67,color:'black'})
+      
+      edges.push({source:4, target:5, value:1,color:'black'})
+
     const graph={nodes:this.getUnique(duplicateNodes,'id'),links:edges};
 
+    return graph;
     
-     return graph;
-    
-
 }
 
 getUnique(arr:any, comp:any) {

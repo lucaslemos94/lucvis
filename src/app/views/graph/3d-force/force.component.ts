@@ -133,7 +133,4 @@ export class ForceComponent implements OnInit {
       elem.webkitRequestFullscreen();
     }
   }
-
-
-
 }
